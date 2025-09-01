@@ -1,20 +1,23 @@
 class Solution {
-    public void rotate(int[] nums, int k) {
-        int n = nums.length;
-        k = k % n;
-        reverse(nums,0,n-1);
-        reverse(nums,0,k-1);
-        reverse(nums,k,n-1);
-    }
-    public static void reverse(int[] nums, int start, int end)
-    {
-        while(start < end)
-        {
-            int temp = nums[start];
-            nums[start] = nums[end];
-            nums[end] = temp;
-            start++;
-            end--;
+     public static void reverseArray(int[] arr,int i, int k) {
+        
+
+        while (i < k) {
+            // Swap elements at start and end
+            int temp = arr[i];
+            arr[i] = arr[k];
+            arr[k] = temp;
+
+            // Move pointers
+            i++;
+            k--;
         }
+        }
+       public void rotate(int[] nums, int k) {
+        k= k%nums.length;  
+       reverseArray(nums,0,nums.length -k-1);
+       reverseArray(nums,nums.length-k,nums.length-1);
+       reverseArray(nums,0,nums.length-1);
+       
     }
 }
